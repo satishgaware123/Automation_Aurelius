@@ -39,7 +39,6 @@ public class BaseClass {
 	@AfterClass
 	public void close_browser() {
 		if (driver != null) {
-			driver.manage().deleteAllCookies();
 			driver.close();
 		}
 	}

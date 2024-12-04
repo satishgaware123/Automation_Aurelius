@@ -10,12 +10,11 @@ public class TestLoginPage extends BaseClass {
 
 	@Test
 	public void VerifyTheUserShouldLogginWithValidCredentials() throws Exception {
-//		driver.get(baseUrl+"auth");
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		
+		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboard");
 	}
 
 	@Test(enabled = true)
@@ -24,6 +23,7 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterInValidEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
+		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
 	@Test(enabled = true)
@@ -32,8 +32,8 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterUnRegisteredEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-//		System.out.println("errorMsg " + loginPom.getTostMsg().getText());
-		Assert.assertEquals(loginPom.getTostMsg().getText(), "User not registered");
+		Thread.sleep(2000);
+		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
 	@Test(enabled = true)
@@ -45,9 +45,6 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "Email is not Valid");
 	}
 
-	@Test
-	public void test() {
 
-	}
 
 }
