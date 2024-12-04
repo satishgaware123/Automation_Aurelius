@@ -15,6 +15,7 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
+		
 	}
 
 	@Test(enabled = true)
