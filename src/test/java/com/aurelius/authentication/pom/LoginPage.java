@@ -41,7 +41,7 @@ public class LoginPage extends com.aurelius.base.BaseClass {
 	}
 	public void enterInValidEmailAddress2() {
 		waitForElementToBeVisible(emailAddress); 
-		emailAddress.sendKeys("courageous.giraffe.hegx@gmail");
+		emailAddress.sendKeys("courageous.giraffe.heg");
 	}
 	
 	@FindBy(how = How.XPATH, using = "//input[@type='password']")
@@ -66,6 +66,13 @@ public class LoginPage extends com.aurelius.base.BaseClass {
 	public WebElement getTostMsg() {
 		waitForElementToBeVisible(tostMsg); 
 		return tostMsg;
+	}
+	@FindBy(how = How.XPATH, using = "//span[text()='Dashboard']")
+	private WebElement dashboard;
+
+	public WebElement dashboard() {
+		waitForElementToBeVisible(dashboard); 
+		return dashboard;
 	}
 	
 	
