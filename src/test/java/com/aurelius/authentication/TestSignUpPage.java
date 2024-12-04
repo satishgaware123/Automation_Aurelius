@@ -1,0 +1,37 @@
+package com.aurelius.authentication;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.aurelius.base.BaseClass;
+
+public class TestSignUpPage extends BaseClass {
+
+	@Test
+	public void testUserWithValidUserEmail() {
+
+	}
+
+	@Test
+	public void verifyThatAfterEnteringTheInvalidOtp() throws Exception {
+		driver.get("http://3.25.145.165/auth/signup");
+		SignUpPom.enterEmail();
+		SignUpPom.clickOnGetStartedButton();
+		SignUpPom.enterInvalidOTP();
+		SignUpPom.clickOnGetStartedButton();
+		Assert.assertEquals(loginPom.getTostMsg(), "OTP Is Invalid");
+
+	}
+
+	@Test
+	public void verifyThatAfterClickOnResendButtionWaitFor60Secconds() throws Exception {
+		driver.get("http://3.25.145.165/auth/signup");
+		SignUpPom.enterEmail();
+		SignUpPom.clickOnGetStartedButton();
+		SignUpPom.enterInvalidOTP();
+		SignUpPom.clickOnGetStartedButton();
+		SignUpPom.clickOnResend();
+		Assert.assertEquals(SignUpPom.getTostMsg(), "Code has been sent to your mail");
+	}
+
+}
