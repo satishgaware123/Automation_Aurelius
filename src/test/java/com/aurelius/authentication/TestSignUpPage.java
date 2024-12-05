@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,7 +27,7 @@ public class TestSignUpPage extends BaseClass {
 		SignUpPom.clickOnGetStartedButton();
 		SignUpPom.enterInvalidOTP();
 		SignUpPom.clickOnGetStartedButton();
-		Assert.assertEquals(loginPom.getTostMsg(), "OTP Is Invalid");
+		AssertJUnit.assertEquals(loginPom.getTostMsg(), "OTP Is Invalid");
 
 	}
 
@@ -37,7 +39,7 @@ public class TestSignUpPage extends BaseClass {
 		SignUpPom.enterInvalidOTP();
 		SignUpPom.clickOnGetStartedButton();
 		SignUpPom.clickOnResend();
-		Assert.assertEquals(SignUpPom.getTostMsg(), "Code has been sent to your mail");
+		AssertJUnit.assertEquals(SignUpPom.getTostMsg(), "Code has been sent to your mail");
 	}
 
 }
