@@ -2,11 +2,7 @@ package com.aurelius.authentication;
 
 
 import org.testng.annotations.Test;
-
-import org.testng.annotations.Test;
-
 import com.aurelius.base.BaseClass;
-
 import org.testng.Assert;
 
 public class TestForgotPassword extends BaseClass {
