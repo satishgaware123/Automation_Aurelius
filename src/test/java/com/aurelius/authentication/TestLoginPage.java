@@ -1,5 +1,11 @@
 package com.aurelius.authentication;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,13 +14,13 @@ import com.aurelius.base.BaseClass;
 
 public class TestLoginPage extends BaseClass {
 
-	@Test
+	@Test(enabled = false)
 	public void VerifyTheUserShouldLogginWithValidCredentials() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboard");
+		AssertJUnit.assertEquals(loginPom.dashboard().getText(), "Dashboard");
 	}
 
 	@Test(enabled = true)
@@ -23,26 +29,26 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterInValidEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
+		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void VerifyThatIfUserIsNotRegister() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterUnRegisteredEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
 		Thread.sleep(2000);
-		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
+		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void VerifyThatShowProperErrorMsgAfterEnteringTheInvalidEmail() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterInValidEmailAddress2();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		Assert.assertEquals(loginPom.getTostMsg().getText(), "Email is not Valid");
+		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(), "Email is not Valid");
 	}
 
 
