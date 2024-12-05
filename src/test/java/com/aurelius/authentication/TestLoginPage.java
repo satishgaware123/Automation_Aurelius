@@ -1,13 +1,10 @@
 package com.aurelius.authentication;
 
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+
+
 
 import com.aurelius.authentication.pom.TestResources;
 import com.aurelius.base.BaseClass;
@@ -20,7 +17,7 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		AssertJUnit.assertEquals(loginPom.dashboard().getText(), "Dashboard");
+		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboard");
 	}
 
 	@Test(enabled = true)
@@ -29,7 +26,7 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterInValidEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
+		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
 	@Test(enabled = false)
@@ -39,7 +36,7 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
 		Thread.sleep(2000);
-		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
+		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
 	@Test(enabled = false)
@@ -48,7 +45,7 @@ public class TestLoginPage extends BaseClass {
 		loginPom.enterInValidEmailAddress2();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(), "Email is not Valid");
+		Assert.assertEquals(loginPom.getTostMsg().getText(), "Email is not Valid");
 	}
 
 
