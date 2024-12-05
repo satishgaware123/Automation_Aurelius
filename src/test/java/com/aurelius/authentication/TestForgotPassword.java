@@ -9,7 +9,6 @@ import com.aurelius.base.BaseClass;
 
 import org.testng.Assert;
 
-
 public class TestForgotPassword extends BaseClass {
 
 	@Test
