@@ -10,10 +10,6 @@
         <methods>
           <include name="close_browser"/>
           <include name="VerifyTheUserShouldNotLoginWithInValidCredentials"/>
-<<<<<<< HEAD
-          <include name="VerifyThatShowProperErrorMsgAfterEnteringTheInvalidEmail"/>
-=======
->>>>>>> origin/develop
           <include name="start_browser"/>
         </methods>
       </class> <!-- com.aurelius.authentication.TestLoginPage -->

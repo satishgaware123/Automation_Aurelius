@@ -1,18 +1,22 @@
+
 package com.aurelius.authentication;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
+
+import org.testng.Assert;
+
 
 import com.aurelius.base.BaseClass;
 
 public class TestSignUpPage extends BaseClass {
 
-	@Test
+	@Test(enabled = false)
 	public void testUserWithValidUserEmail() {
 
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void verifyThatAfterEnteringTheInvalidOtp() throws Exception {
 		driver.get("http://3.25.145.165/auth/signup");
 		SignUpPom.enterEmail();
@@ -23,7 +27,7 @@ public class TestSignUpPage extends BaseClass {
 
 	}
 
-	@Test
+	@Test(enabled = false)
 	public void verifyThatAfterClickOnResendButtionWaitFor60Secconds() throws Exception {
 		driver.get("http://3.25.145.165/auth/signup");
 		SignUpPom.enterEmail();

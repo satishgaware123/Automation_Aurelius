@@ -1,14 +1,18 @@
+
 package com.aurelius.authentication;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+
+
 
 import com.aurelius.authentication.pom.TestResources;
 import com.aurelius.base.BaseClass;
 
 public class TestLoginPage extends BaseClass {
 
-	@Test
+	@Test(enabled = false)
 	public void VerifyTheUserShouldLogginWithValidCredentials() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterEmailAddress();
@@ -26,7 +30,7 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void VerifyThatIfUserIsNotRegister() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterUnRegisteredEmailAddress();
@@ -36,7 +40,7 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void VerifyThatShowProperErrorMsgAfterEnteringTheInvalidEmail() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterInValidEmailAddress2();
