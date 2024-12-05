@@ -1,5 +1,8 @@
 package com.aurelius.authentication;
 
+
+import org.testng.annotations.Test;
+
 import org.testng.annotations.Test;
 
 import com.aurelius.base.BaseClass;
@@ -24,6 +27,7 @@ public class TestForgotPassword extends BaseClass {
 		loginPom.enterUnRegisteredEmailAddress();
 		forgotPasswordPom.clckOnSend();
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "User Is Not Register Or Email Is Not Verified");
+
 	}
 
 }
