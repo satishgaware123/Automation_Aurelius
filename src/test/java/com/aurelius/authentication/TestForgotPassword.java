@@ -1,6 +1,12 @@
 package com.aurelius.authentication;
 
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +19,7 @@ public class TestForgotPassword  extends BaseClass{
 	public void verifyThatNavigateToTheForgotPassword() throws InterruptedException {
 		driver.get("http://3.25.145.165/auth");
 		forgotPasswordPom.clickOnTheForgotPass();
-		Assert.assertEquals(driver.getCurrentUrl(),"http://3.25.145.165/auth/forgot-password");
+		AssertJUnit.assertEquals(driver.getCurrentUrl(),"http://3.25.145.165/auth/forgot-password");
 	
 	}
 	
@@ -23,7 +29,7 @@ public class TestForgotPassword  extends BaseClass{
 		forgotPasswordPom.clickOnTheForgotPass();
 		loginPom.enterUnRegisteredEmailAddress();
 		forgotPasswordPom.clckOnSend();
-		Assert.assertEquals(loginPom.getTostMsg().getText(),"User Is Not Register Or Email Is Not Verified");
+		AssertJUnit.assertEquals(loginPom.getTostMsg().getText(),"User Is Not Register Or Email Is Not Verified");
 	}
 	
 	
