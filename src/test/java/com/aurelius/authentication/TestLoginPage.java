@@ -3,24 +3,21 @@ package com.aurelius.authentication;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
-
-
 import com.aurelius.authentication.pom.TestResources;
 import com.aurelius.base.BaseClass;
 
 public class TestLoginPage extends BaseClass {
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void VerifyTheUserShouldLogginWithValidCredentials() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterEmailAddress();
 		loginPom.enterPassword();
 		loginPom.clickOnLoginButton();
-		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboard");
+		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboards");
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void VerifyTheUserShouldNotLoginWithInValidCredentials() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterInValidEmailAddress();
@@ -47,7 +44,5 @@ public class TestLoginPage extends BaseClass {
 		loginPom.clickOnLoginButton();
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "Email is not Valid");
 	}
-
-
 
 }
