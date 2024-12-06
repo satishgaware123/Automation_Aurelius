@@ -12,51 +12,73 @@ import com.aventstack.extentreports.Status;
 public class listeners extends BaseClass implements ITestListener {
 
 	ExtentTest test;
-
 	ExtentReports extent = ExtentReportGenerator.generateReport();
-	ThreadLocal<ExtentTest> extenttest = new ThreadLocal<ExtentTest>();
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 
+	@Override
 	public void onTestStart(ITestResult result) {
-		test = extent.createTest(result.getTestClass().getName() + "**" + result.getMethod().getMethodName());
-		extenttest.set(test);
+		test = extent.createTest(result.getTestClass().getName() + " -> " + result.getMethod().getMethodName());
+		extentTest.set(test);
 	}
 
+	@Override
 	public void onTestSuccess(ITestResult result) {
-
-		test.log(Status.PASS, "Test Case Passed");
-		String greenColor = "\033[0;32m";
-		String resetColor = "\033[0m";
-		System.out.println(greenColor + "Test Case Passed: " + resetColor + result.getName());
+		extentTest.get().log(Status.PASS, "Test Case Passed: " + result.getMethod().getMethodName());
+		System.out.println(colorText("Test Case Passed: " + result.getMethod().getMethodName(), "green"));
 	}
 
+	@Override
 	public void onTestFailure(ITestResult result) {
+		extentTest.get().log(Status.FAIL, "Test Case Failed: " + result.getMethod().getMethodName());
+		extentTest.get().log(Status.FAIL, "Error: " + result.getThrowable());
+		System.out.println("Test Case Failed: " + result.getMethod().getMethodName());
 
-		test.log(Status.FAIL, "Test Case Failed");
-		String redcolor = "\033[0;31m";
-		String resetColor = "\033[0m";
-		System.out.println(redcolor + "Test Case Failed: " + resetColor + result.getName());
 		try {
 			if (BaseClass.driver != null) {
-				String screenshotPath = getScreenshotPath(result.getMethod().getMethodName());
-				test.fail(result.getThrowable());
-				test.addScreenCaptureFromPath(screenshotPath);
+				String screenshotPath = BaseClass.getScreenshotPath(result.getMethod().getMethodName());
+				String absolutePath = System.getProperty("user.dir") + "/" + screenshotPath;
+//				System.out.println("Relative Path: " + screenshotPath);
+//				System.out.println("Absolute Path: " + absolutePath);
+				extentTest.get().addScreenCaptureFromPath(absolutePath, "Failure Screenshot");
 			} else {
-				test.log(Status.FAIL, "Driver is not initialized");
+				extentTest.get().log(Status.FAIL, "Driver is not initialized. Screenshot not captured.");
 			}
 		} catch (Exception e) {
+			extentTest.get().log(Status.FAIL, "Failed to attach screenshot due to: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 
+	@Override
 	public void onTestSkipped(ITestResult result) {
-
-		test.log(Status.SKIP, "Test Case Skipped");
-		System.out.println("Test Case Skipped " + result.getName());
+		extentTest.get().log(Status.SKIP, "Test Case Skipped: " + result.getMethod().getMethodName());
+		extentTest.get().log(Status.SKIP, "Reason: " + result.getThrowable());
+		System.out.println(colorText("Test Case Skipped: " + result.getMethod().getMethodName(), "yellow"));
 	}
 
+	@Override
 	public void onFinish(ITestContext context) {
-
 		extent.flush();
 	}
 
+	private String colorText(String message, String color) {
+		String resetColor = "\033[0m";
+		String coloredText;
+
+		switch (color.toLowerCase()) {
+		case "green":
+			coloredText = "\033[0;32m" + message + resetColor;
+			break;
+		case "red":
+			coloredText = "\033[0;31m" + message + resetColor;
+			break;
+		case "yellow":
+			coloredText = "\033[0;33m" + message + resetColor;
+			break;
+		default:
+			coloredText = message;
+		}
+
+		return coloredText;
+	}
 }
