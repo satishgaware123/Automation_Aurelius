@@ -17,7 +17,7 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboards");
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void VerifyTheUserShouldNotLoginWithInValidCredentials() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterInValidEmailAddress();
@@ -26,7 +26,7 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void VerifyThatIfUserIsNotRegister() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterUnRegisteredEmailAddress();
@@ -36,7 +36,7 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.getTostMsg().getText(), "Invalid user name or password");
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void VerifyThatShowProperErrorMsgAfterEnteringTheInvalidEmail() throws Exception {
 		driver.get(TestResources.LOGIN_URL);
 		loginPom.enterInValidEmailAddress2();

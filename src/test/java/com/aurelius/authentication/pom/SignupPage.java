@@ -54,13 +54,20 @@ public class SignupPage {
 		clickOnResend.click();
 	}
 
-	@FindBy(how = How.XPATH, using = "//div[@class='custom-msg-holder']")
+	@FindBy(how = How.XPATH, using = "//div[@id='toast-container']//div[@class='custom-msg-holder']")
 	private WebElement tostMsg;
 
 	public WebElement getTostMsg() {
 		waitForElementToBeVisible(tostMsg);
 		return tostMsg;
 	}
-	
-	
+
+	@FindBy(how = How.XPATH, using = "//span[text()='Resend in ']")
+	private WebElement resentSeconds;
+
+	public WebElement getResentSeconds() {
+		waitForElementToBeVisible(resentSeconds);
+		return resentSeconds;
+	}
+
 }
