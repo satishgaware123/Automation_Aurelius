@@ -17,12 +17,13 @@ import org.testng.annotations.BeforeClass;
 import com.aurelius.authentication.pom.ForgotPassword;
 import com.aurelius.authentication.pom.LoginPage;
 import com.aurelius.authentication.pom.SignupPage;
+import com.aurelius.profile.pom.ProfilePage;
 import com.aurelius.utility.ConfigDataProvider;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
-
+	public ProfilePage profilePom;
 	public LoginPage loginPom;
 	public SignupPage signUpPom;
 	public ForgotPassword forgotPasswordPom;
@@ -43,6 +44,7 @@ public class BaseClass {
 		loginPom = new LoginPage(driver);
 		signUpPom = new SignupPage(driver);
 		forgotPasswordPom = new ForgotPassword(driver);
+		profilePom = new ProfilePage(driver);
 	}
 
 	public static String lastScreenshotPath;
@@ -51,24 +53,16 @@ public class BaseClass {
 		if (driver == null) {
 			throw new IllegalStateException("WebDriver is not initialized.");
 		}
-
 		File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String timestamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
-
-		// Define relative path for the screenshot
 		String relativePath = "aureliusReport/screenshots/" + testCaseName + "_" + timestamp + ".png";
 		String fullPath = System.getProperty("user.dir") + "/" + relativePath;
-
-		// Create the directory if it doesn't exist
 		File dir = new File("aureliusReport/screenshots");
 		if (!dir.exists() && !dir.mkdirs()) {
 			throw new IOException("Failed to create screenshot directory.");
 		}
-
-		// Save the screenshot
 		FileUtils.copyFile(source, new File(fullPath));
-
-		return relativePath; // Return the relative path for use in the report
+		return relativePath;
 	}
 
 	@AfterClass

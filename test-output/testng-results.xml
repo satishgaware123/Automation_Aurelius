@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-12-10T11:18:31 IST" name="Default suite" finished-at="2024-12-10T11:18:42 IST" duration-ms="11339">
+    <groups>
+    </groups>
+    <test started-at="2024-12-10T11:18:31 IST" name="Default test" finished-at="2024-12-10T11:18:42 IST" duration-ms="11339">
+      <class name="com.aurelius.profile.TestProfileSection">
+        <test-method is-config="true" signature="start_browser()[pri:0, instance:com.aurelius.profile.TestProfileSection@4fb0f2b9]" started-at="2024-12-10T11:18:31 IST" name="start_browser" finished-at="2024-12-10T11:18:33 IST" duration-ms="2012" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- start_browser -->
+        <test-method signature="verify_user_navigating_to_the_profile_page()[pri:0, instance:com.aurelius.profile.TestProfileSection@4fb0f2b9]" started-at="2024-12-10T11:18:33 IST" name="verify_user_navigating_to_the_profile_page" finished-at="2024-12-10T11:18:42 IST" duration-ms="9189" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_user_navigating_to_the_profile_page -->
+        <test-method is-config="true" signature="close_browser()[pri:0, instance:com.aurelius.profile.TestProfileSection@4fb0f2b9]" started-at="2024-12-10T11:18:42 IST" name="close_browser" finished-at="2024-12-10T11:18:42 IST" duration-ms="84" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close_browser -->
+      </class> <!-- com.aurelius.profile.TestProfileSection -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
