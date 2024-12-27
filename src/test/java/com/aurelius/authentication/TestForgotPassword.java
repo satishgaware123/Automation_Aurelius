@@ -11,7 +11,7 @@ public class TestForgotPassword extends BaseClass {
 	public void verifyThatNavigateToTheForgotPassword() throws InterruptedException {
 		driver.get("http://3.25.145.165/auth");
 		forgotPasswordPom.clickOnTheForgotPass();
-		Assert.assertEquals(driver.getCurrentUrl(), "http://3.25.145.165/auth/forgot-password$");
+		Assert.assertEquals(driver.getCurrentUrl(), "http://3.25.145.165/auth/forgot-password");
 	}
 
 	@Test(priority = 2)
