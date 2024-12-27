@@ -11,6 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -34,10 +35,17 @@ public class BaseClass {
 	public static String reportPath = data.getReportPath();
 	public static String ssPath = data.getScreenshotPath();
 
+	public static boolean isHeadless = true;
+
 	@BeforeClass
 	public void start_browser() {
 		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
+
+		ChromeOptions options = new ChromeOptions();
+		if (isHeadless) {
+			options.addArguments("--headless");
+		}
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 

@@ -13,8 +13,8 @@ public class TestResources extends BaseClass {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	public static final String LOGIN_URL = baseUrl+"auth";
-	public static final String SINGUP_URL = baseUrl+"auth/signup";
-	
+
+	public static final String LOGIN_URL = baseUrl + "auth";
+	public static final String SINGUP_URL = baseUrl + "auth/signup";
 
 }

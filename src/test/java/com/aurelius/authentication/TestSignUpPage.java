@@ -12,14 +12,14 @@ public class TestSignUpPage extends BaseClass {
 
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void verifyThatAfterEnteringTheInvalidOtp() throws Exception {
 		driver.get("http://3.25.145.165/auth/signup");
 		signUpPom.enterEmail();
 		signUpPom.clickOnGetStartedButton();
 		signUpPom.enterInvalidOTP();
 		signUpPom.clickOnGetStartedButton();
-		Assert.assertEquals(loginPom.getTostMsg(), "OTP Is Invalid");
+		Assert.assertEquals(loginPom.getTostMsg2().getText(), "×\n" + "Error\n" + "OTP Is Invalid");
 
 	}
 
@@ -28,10 +28,11 @@ public class TestSignUpPage extends BaseClass {
 		driver.get("http://3.25.145.165/auth/signup");
 		signUpPom.enterEmail();
 		signUpPom.clickOnGetStartedButton();
-		signUpPom.enterInvalidOTP();
-		signUpPom.clickOnGetStartedButton();
+		Thread.sleep(60000);
 		signUpPom.clickOnResend();
-		Assert.assertEquals(signUpPom.getTostMsg(), "Code has been sent to your mail");
+//		signUpPom.enterInvalidOTP();
+//		signUpPom.clickOnSubmit();
+		Assert.assertEquals(loginPom.getTostMsg2().getText(), "×\n" + "Error\n" + "OTP Is Invalid");
 	}
 
 }

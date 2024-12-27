@@ -46,12 +46,25 @@ public class SignupPage {
 		enterTheOTP.sendKeys("11111");
 	}
 
-	@FindBy(how = How.XPATH, using = "//a[text()='Resend']")
+	@FindBy(how = How.XPATH, using = "//a[text()=' Resend ']")
 	private WebElement clickOnResend;
 
 	public void clickOnResend() {
 		waitForElementToBeVisible(clickOnResend);
 		clickOnResend.click();
+	}
+
+	public WebElement resendButton() {
+		waitForElementToBeVisible(clickOnResend);
+		return clickOnResend;
+	}
+
+	@FindBy(how = How.XPATH, using = "//button[text()=' Submit ']")
+	private WebElement submit;
+
+	public void clickOnSubmit() {
+		waitForElementToBeVisible(submit);
+		submit.click();
 	}
 
 	@FindBy(how = How.XPATH, using = "//div[@class='custom-msg-holder']")
@@ -61,6 +74,5 @@ public class SignupPage {
 		waitForElementToBeVisible(tostMsg);
 		return tostMsg;
 	}
-	
-	
+
 }
