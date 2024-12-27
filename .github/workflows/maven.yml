@@ -58,6 +58,6 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: screenshots
-        path: target/screenshots/*
+        path: aureliusReport/screenshots*
         retention-days: 1
         
