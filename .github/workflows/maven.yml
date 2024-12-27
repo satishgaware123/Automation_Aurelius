@@ -52,3 +52,12 @@ jobs:
         name: test-reports
         path: target/surefire-reports/*
         retention-days: 1
+    # Upload Screenshots (if any failed tests)
+    - name: Upload Failed Test Screenshots
+      if: failure()  # Only run if the tests fail
+      uses: actions/upload-artifact@v3
+      with:
+        name: screenshots
+        path: target/screenshots/*
+        retention-days: 1
+        
