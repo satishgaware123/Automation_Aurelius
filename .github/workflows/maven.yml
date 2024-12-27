@@ -30,15 +30,25 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-maven-
+
     # Install dependencies and run tests
     - name: Run Maven Tests
       run: mvn clean test
 
-    # Archive test reports
+    # Archive test report as artifact
     - name: Archive Test Report
       if: success() || failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         name: Test-Report
+        path: target/surefire-reports/*
+        retention-days: 1
+
+    # Upload test reports as a separate artifact (Optional)
+    - name: Upload Detailed Test Reports
+      if: success() || failure()
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-reports
         path: target/surefire-reports/*
         retention-days: 1
