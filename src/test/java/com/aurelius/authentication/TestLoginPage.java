@@ -16,7 +16,7 @@ public class TestLoginPage extends BaseClass {
 		Assert.assertEquals(loginPom.dashboard().getText(), "Dashboard");
 		loginPom.clickOnTheUserName();
 		loginPom.clickOnLogout();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 	}
 
 	@Test(enabled = true)
