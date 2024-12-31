@@ -38,7 +38,7 @@ jobs:
     # Archive test report as artifact
     - name: Archive Test Report
       if: success() || failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4.5.0
       with:
         name: Test-Report
         path: target/surefire-reports/*
